@@ -7,6 +7,7 @@ class MongoConfig(BaseSettings):
     HOST: Annotated[str, Field(validation_alias="MONGO_HOST")]
     PORT: Annotated[int, Field(validation_alias="MONGO_PORT")]
     DB: Annotated[str, Field(validation_alias="MONGO_DB")]
+    TEST_DB: Annotated[str, Field(validation_alias="MONGO_TEST_DB")]
     USER: Annotated[str, Field(validation_alias="MONGO_USER")]
     PASSWORD: Annotated[str, Field(validation_alias="MONGO_PASSWORD")]
     

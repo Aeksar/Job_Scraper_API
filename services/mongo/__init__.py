@@ -1,2 +1,2 @@
 from .repository import TaskCollection
-from .conf import mongo_client
+from .conf import connect_to_mongodb
