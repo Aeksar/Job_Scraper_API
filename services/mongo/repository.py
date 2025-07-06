@@ -43,9 +43,9 @@ class TaskCollection:
         await self.collection.update_one(filter, update)
         
     async def get_status(self, task_id: str):
-        # try:
+        try:
             doc = await self.collection.find_one({"_id": ObjectId(task_id)})
             return doc["status"]
-        # except Exception as e:
-        #     logger.error(f"Error with get status: {e}")
-        #     return None
+        except Exception as e:
+            logger.error(f"Error with get status: {e}")
+            return None

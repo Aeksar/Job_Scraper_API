@@ -11,6 +11,9 @@ class MongoConfig(BaseSettings):
     USER: Annotated[str, Field(validation_alias="MONGO_USER")]
     PASSWORD: Annotated[str, Field(validation_alias="MONGO_PASSWORD")]
     
+    def url(self):
+        return f"mongodb://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/"
+    
     model_config = SettingsConfigDict(
         env_file=".env",
         extra='ignore',
