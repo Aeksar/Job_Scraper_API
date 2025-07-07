@@ -21,10 +21,6 @@ jobs:
         image: mongo:latest
         ports:
           - 27017:27017
-        options: >-
-          --healthcheck-interval=10s
-          --healthcheck-timeout=5s
-          --healthcheck-retries=3
         env:
           MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGO_USER }}
           MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
@@ -47,11 +43,12 @@ jobs:
             MONGO_TEST_DB: test_job_data
             MONGO_USER: ${{ secrets.MONGO_USER }}
             MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+      run: |
+        pytest
     # - name: Lint with flake8
     #   run: |
     #     # stop the build if there are Python syntax errors or undefined names
     #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
     #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      run: |
-        pytest
+
