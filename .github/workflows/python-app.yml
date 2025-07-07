@@ -45,6 +45,13 @@ jobs:
             MONGO_TEST_DB: test_job_data
             MONGO_USER: ${{ secrets.MONGO_USER }}
             MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+
+            RMQ_HOST: ${{ secrets.RMQ_HOST }}
+            RMQ_PORT: ${{ secrets.RMQ_PORT }}
+            RMQ_PASSWORD: ${{ secrets.RMQ_PASSWORD }}
+            RMQ_USER: ${{ secrets.RMQ_USER }}
+            RMQ_PRODUCE_QUEUE: ${{ secrets.RMQ_PRODUCE_QUEUE }}
+            RMQ_CONSUME_QUEUE: ${{ secrets.RMQ_CONSUME_QUEUE }}
       run: |
         pytest
     # - name: Lint with flake8
