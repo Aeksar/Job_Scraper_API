@@ -2,9 +2,8 @@ from aio_pika.abc import AbstractConnection
 import aio_pika
 import json
 
-
 from services.rabbit.conf import setup_rabbit
-from settings import logger, RabbitConfig
+from settings import logger, rabbit_cfg
     
     
 async def produce_message(task_id: str, connection: AbstractConnection):
@@ -19,6 +18,6 @@ async def produce_message(task_id: str, connection: AbstractConnection):
     )
     await ch.default_exchange.publish(
         message=message,
-        routing_key=RabbitConfig().PRODUCE_QUEUE,
+        routing_key=rabbit_cfg.PRODUCE_QUEUE,
     )
     logger.info(f"Send message to MQ -> {payload}")

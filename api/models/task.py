@@ -1,4 +1,4 @@
-from pydantic import BaseModel,HttpUrl
+from pydantic import BaseModel, HttpUrl
 from typing import Optional
 from enum import Enum
 
